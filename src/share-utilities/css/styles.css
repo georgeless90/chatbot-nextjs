@@ -106,9 +106,9 @@ body {
 }
 
 .wrapper .box .item.right .msg {
-    background: linear-gradient(30deg, rgb(69, 43, 26) -12%, rgb(69, 43, 26) 112%);
+    background: beige;
     border-radius: 9px;
-    color: #ffffff;
+    color: #0f0f0f;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;

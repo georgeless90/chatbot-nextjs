@@ -223,11 +223,8 @@ export default function Home() {
                   <label htmlFor="actual-btn">Summarize PDF</label>
                 </>
 
-                
               )}
 
-              
-              
             </div>
           </div>
         </div>
