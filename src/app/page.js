@@ -16,6 +16,7 @@ export default function Home() {
   const [messages, setMessages] = React.useState([]);
   const [fileReady, setFileReady] = React.useState(false);
   const [selectedFile, setSelectedFile] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   
 
 
@@ -43,7 +44,9 @@ export default function Home() {
   // }
 
   const sendMessage = async () => {
-     const newMessage = {
+    setLoading(true);
+
+    const newMessage = {
       body: message,
       from: 'me'
     }
@@ -62,6 +65,8 @@ export default function Home() {
     });
 
     const data = await response.json();
+
+    setLoading(false);
 
     const aiMessage = {
       body: data.message,
@@ -163,7 +168,7 @@ export default function Home() {
         )} */}
         <div className="wrapper">
           <div className="title">
-            <div className='wrapper_left'>
+            <div className="flex items-center gap-3">
               <Image
                 className='image--header'
                 src={headerImage}
@@ -195,15 +200,23 @@ export default function Home() {
                 }
               </div>
             ))}
+
+            {loading && (
+              <div className="item">
+                <div className="msg">
+                  <p>Thinking...</p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="typing-area">
             <div className="input-field">
               <input type="text" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Type your message" required />
-              <button type="button"
+              <button type="button" disabled={loading}
                 onClick={sendMessage}>Send</button>
               {selectedFile ? (
-              <button type="button" className="button-upload"
+              <button type="button" className="button-upload" disabled={loading}
                 onClick={uploadFile}>Send PDF</button>
               ):(<>
                 <input type="file" id="actual-btn" name="selectedFile" onChange={(e) => setSelectedFile(e.target.files[0])} className="button-upload"/>
@@ -213,9 +226,6 @@ export default function Home() {
               )}
               
             </div>
-          </div>
-          <div className="footer">
-            Asystent chatbot
           </div>
         </div>
     </>
