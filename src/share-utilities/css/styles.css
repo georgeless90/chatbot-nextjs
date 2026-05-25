@@ -175,8 +175,7 @@ input[type="file"] {
 }
 
 .wrapper .typing-area .input-field .button-upload {
-       width: 100%;
-
+    width: 100%;
 }
 
 .wrapper .typing-area .input-field button:hover,

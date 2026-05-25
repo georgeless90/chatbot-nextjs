@@ -220,7 +220,7 @@ export default function Home() {
                   <button type="button" disabled={loading}
                   onClick={sendMessage}>Send</button>
                   <input type="file" id="actual-btn" name="selectedFile" onChange={(e) => setSelectedFile(e.target.files[0])} className="button-upload"/>
-                  <label htmlFor="actual-btn">Resumir PDF</label>
+                  <label htmlFor="actual-btn">Summarize PDF</label>
                 </>
 
                 
