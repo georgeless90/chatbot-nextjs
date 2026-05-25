@@ -211,21 +211,22 @@ export default function Home() {
           </div>
 
           <div className="typing-area">
-            <div className="input-field">
-              <input type="text" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Type your message" required />
-              
+            <div className="input-field">              
               {selectedFile ? (
               <button type="button" className="button-upload" disabled={loading}
                 onClick={uploadFile}>Send PDF</button>
               ):(<>
+                  <input type="text" onChange={(e) => setMessage(e.target.value)} value={message} placeholder="Type your message" required />
                   <button type="button" disabled={loading}
                   onClick={sendMessage}>Send</button>
+                  <input type="file" id="actual-btn" name="selectedFile" onChange={(e) => setSelectedFile(e.target.files[0])} className="button-upload"/>
+                  <label htmlFor="actual-btn">Resumir PDF</label>
                 </>
+
                 
               )}
 
-              <input type="file" id="actual-btn" name="selectedFile" onChange={(e) => setSelectedFile(e.target.files[0])} className="button-upload"/>
-              <label htmlFor="actual-btn">Choose File</label>
+              
               
             </div>
           </div>
