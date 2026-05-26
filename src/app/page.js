@@ -8,7 +8,6 @@ import { faCommentDots } from '@fortawesome/free-solid-svg-icons'
 
 export default function Home() {
 
-  let iconChat = '/images/blue.jpeg';
   let headerImage = '/images/atak.png';
 
   const [message, setMessage] = React.useState('')
@@ -43,7 +42,8 @@ export default function Home() {
   //     })
   // }
 
-  const sendMessage = async () => {
+  // 1. Esta es la function que se encarga de enviar messages a groq
+  const sendMessage = async () => { 
     setLoading(true);
 
     const newMessage = {
@@ -51,9 +51,11 @@ export default function Home() {
       from: 'me'
     }
 
+    //1. Esta function maneja el state de messages
     setMessages(state => [...state, newMessage])
     setMessage("")
 
+    //1. Y este es el endpoint de nextjs api que recibe la converdsacion 
     const response = await fetch("/api/chat", {
       method: "POST",
       headers: {
@@ -77,6 +79,7 @@ export default function Home() {
     console.log(data);
   };
 
+  //3. Esta es la function que se encarga de enviar el pdf a groq
   const uploadFile = async () =>{
 
      const newMessage = {
@@ -90,6 +93,7 @@ export default function Home() {
 
     formData.append("file", selectedFile);
 
+    //3. Este es el endpoint route nextjs 
     const response = await fetch("/api/upload", {
       method: "POST",
       body: formData,

@@ -8,6 +8,7 @@ const client = new OpenAI({
   baseURL: "https://api.groq.com/openai/v1",
 });
 
+//3. Este es el endpoint completo para enviar el pdf 
 export async function POST(req: Request) {
   try {
     // Obtener form data
@@ -17,6 +18,7 @@ export async function POST(req: Request) {
     const file = formData.get("file") as File;
 
     // Obtener prompt opcional
+    //3. Se puede hacer una pregunta acerca del pdf enviado, pero para este project se usa es de resumir por default
     const question =
       (formData.get("question") as string) ||
       "Resume este documento";
